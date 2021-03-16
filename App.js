@@ -8,6 +8,7 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 //components
 import StatusBar from './app/components/StatusBar';
 import {colors} from './app/config/colors';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 //appTheme
 const theme = {
@@ -23,7 +24,7 @@ const App = () => {
   return (
     <PaperProvider theme={theme}>
       <StatusBar />
-      <WelcomeScreen />
+      <RegisterScreen />
     </PaperProvider>
   );
 };

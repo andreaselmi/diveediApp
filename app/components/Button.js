@@ -11,6 +11,7 @@ const AppButton = ({
   mode = 'contained',
   letterSpacing = 6,
   height = 50,
+  textColor = 'white',
   ...restProps
 }) => {
   return (
@@ -20,7 +21,7 @@ const AppButton = ({
       mode={mode}
       style={[styles.button, style]}
       {...restProps}>
-      <Text style={{color: 'white', fontSize: 16}}>{name}</Text>
+      <Text style={{color: textColor, fontSize: 16}}>{name}</Text>
     </Button>
   );
 };

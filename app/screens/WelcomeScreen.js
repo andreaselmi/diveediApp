@@ -25,23 +25,16 @@ const WelcomeScreen = () => {
             CONDIVIDI I SERVIZI CHE AMI, DIVIDI I COSTI
           </Text>
         </View>
-        <View style={styles.bgImgContainer}>
-          <Image
-            style={styles.bgImg}
-            source={require('../assets/homebg.png')}
-            resizeMode="cover"
-          />
-        </View>
+        <Image
+          style={styles.bgImg}
+          source={require('../assets/homebg.png')}
+          resizeMode="cover"
+        />
         <View style={styles.authContainer}>
           <Button name="Register" onPress={() => console.log('Pressed')} />
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginTop: 5,
-            }}>
+          <View style={styles.loginTextContainer}>
             <Text>Hai già un account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log('pressed')}>
               <Text style={{color: colors.primary}}>Accedi</Text>
             </TouchableOpacity>
           </View>
@@ -53,34 +46,36 @@ const WelcomeScreen = () => {
 
 const styles = StyleSheet.create({
   authContainer: {
-    marginTop: 70,
-  },
-  bgImgContainer: {
-    width: '100%',
-    alignItems: 'flex-end',
-    right: -20,
+    marginTop: 80,
   },
   bgImg: {
-    width: 300,
+    alignSelf: 'flex-end',
     height: 300,
+    right: -20,
+    width: 300,
   },
   headerImgContainer: {
-    width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
   },
   headerImg: {
-    width: 80,
     height: 120,
+    width: 80,
   },
   headerTextContainer: {
-    width: '100%',
     alignItems: 'center',
-    marginTop: 35,
+    marginTop: 20,
+    width: '100%',
   },
   headerText: {
     color: colors.primary,
     fontSize: 24,
+  },
+  loginTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 5,
   },
   screenContainer: {
     padding: 20,
