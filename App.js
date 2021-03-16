@@ -1,19 +1,30 @@
 import 'react-native-gesture-handler';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import React from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+//Screen
+import WelcomeScreen from './app/screens/WelcomeScreen';
+
+//components
+import StatusBar from './app/components/StatusBar';
+import {colors} from './app/config/colors';
+
+//appTheme
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: colors.primary,
+    accent: colors.secondary,
+  },
+};
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text>A Christian puzza il culo</Text>
-          <Icon name="rocket" size={30} color="#900" />
-        </View>
-      </SafeAreaView>
-    </>
+    <PaperProvider theme={theme}>
+      <StatusBar />
+      <WelcomeScreen />
+    </PaperProvider>
   );
 };
 
