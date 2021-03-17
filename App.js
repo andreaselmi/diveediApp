@@ -1,15 +1,14 @@
 import 'react-native-gesture-handler';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 
 //Screen
-import WelcomeScreen from './app/screens/WelcomeScreen';
+import AuthStack from './app/navigations/AuthStack';
 
 //components
 import StatusBar from './app/components/StatusBar';
 import {colors} from './app/config/colors';
-import RegisterScreen from './app/screens/RegisterScreen';
-import LoginScreen from './app/screens/LoginScreen';
 
 //appTheme
 const theme = {
@@ -24,8 +23,10 @@ const theme = {
 const App = () => {
   return (
     <PaperProvider theme={theme}>
-      <StatusBar />
-      <LoginScreen />
+      <NavigationContainer>
+        <StatusBar />
+        <AuthStack />
+      </NavigationContainer>
     </PaperProvider>
   );
 };

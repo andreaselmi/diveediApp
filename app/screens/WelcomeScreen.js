@@ -9,7 +9,7 @@ import Button from '../components/Button';
 //config
 import {colors} from '../config/colors';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
   return (
     <Screen>
       <View style={styles.screenContainer}>
@@ -31,10 +31,13 @@ const WelcomeScreen = () => {
           resizeMode="cover"
         />
         <View style={styles.authContainer}>
-          <Button name="Register" onPress={() => console.log('Pressed')} />
+          <Button
+            name="Register"
+            onPress={() => navigation.navigate('Register')}
+          />
           <View style={styles.loginTextContainer}>
             <Text>Hai già un account? </Text>
-            <TouchableOpacity onPress={() => console.log('pressed')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <Text style={{color: colors.primary}}>Accedi</Text>
             </TouchableOpacity>
           </View>

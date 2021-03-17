@@ -8,6 +8,13 @@ import SocialButton from '../components/SocialButton';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 
+import * as yup from 'yup';
+
+let validationSchema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required().min(6),
+});
+
 const LoginScreen = () => {
   return (
     <Screen>
@@ -23,13 +30,14 @@ const LoginScreen = () => {
               email: '',
               password: '',
             }}
-            onSubmit={(values) => console.log(values)}>
+            onSubmit={(values) => console.log(values)}
+            validationSchema={validationSchema}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
                 <FormField
                   autoCapitalize="none"
                   label="Email"
-                  name="Email"
+                  name="email"
                   keyboardType="email-address"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
@@ -39,7 +47,7 @@ const LoginScreen = () => {
                 <FormField
                   autoCapitalize="none"
                   label="Password"
-                  name="Password"
+                  name="password"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   placeholder="Password"

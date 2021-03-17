@@ -1,12 +1,20 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
+import * as yup from 'yup';
 
 import Screen from '../components/Screen';
 import Text from '../components/Text';
 import SocialButton from '../components/SocialButton';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
+
+let validationSchema = yup.object().shape({
+  firstName: yup.string().required().min(2),
+  lastName: yup.string().email().required().min(2),
+  email: yup.string().email().required(),
+  password: yup.string().required().min(6),
+});
 
 const RegisterScreen = () => {
   return (
@@ -23,14 +31,15 @@ const RegisterScreen = () => {
               email: '',
               password: '',
             }}
-            onSubmit={(values) => console.log(values)}>
+            onSubmit={(values) => console.log(values)}
+            validationSchema={validationSchema}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
                 <FormField
                   autoCorrect={false}
                   label="First Name"
                   mode="flat"
-                  name="FirstName"
+                  name="firstName"
                   onChangeText={handleChange('firstName')}
                   onBlur={handleBlur('firstName')}
                   placeholder="First Name"
@@ -40,7 +49,7 @@ const RegisterScreen = () => {
                 <FormField
                   autoCorrect={false}
                   label="Last Name"
-                  name="LastName"
+                  name="lastName"
                   onChangeText={handleChange('lastName')}
                   onBlur={handleBlur('lastName')}
                   placeholder="Last Name"
@@ -49,7 +58,7 @@ const RegisterScreen = () => {
                 <FormField
                   autoCapitalize="none"
                   label="Email"
-                  name="Email"
+                  name="email"
                   keyboardType="email-address"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
@@ -59,7 +68,7 @@ const RegisterScreen = () => {
                 <FormField
                   autoCapitalize="none"
                   label="Password"
-                  name="Password"
+                  name="password"
                   onChangeText={handleChange('password')}
                   onBlur={handleBlur('password')}
                   placeholder="Password"
