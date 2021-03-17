@@ -8,7 +8,7 @@ import SocialButton from '../components/SocialButton';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 
-const RegisterScreen = () => {
+const LoginScreen = () => {
   return (
     <Screen>
       <View style={styles.container}>
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterScreen;
+export default LoginScreen;

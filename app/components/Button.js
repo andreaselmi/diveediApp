@@ -6,22 +6,20 @@ import {Button} from 'react-native-paper';
 import Text from './Text';
 
 const AppButton = ({
-  style,
+  buttonStyle,
   name,
   mode = 'contained',
-  letterSpacing = 6,
   height = 50,
-  textColor = 'white',
+  textStyle,
   ...restProps
 }) => {
   return (
     <Button
-      labelStyle={{letterSpacing}}
       contentStyle={{height}}
       mode={mode}
-      style={[styles.button, style]}
+      style={[styles.button, buttonStyle]}
       {...restProps}>
-      <Text style={{color: textColor, fontSize: 16}}>{name}</Text>
+      <Text style={[styles.text, textStyle]}>{name}</Text>
     </Button>
   );
 };
@@ -29,6 +27,9 @@ const AppButton = ({
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
+  },
+  text: {
+    color: 'white',
   },
 });
 
