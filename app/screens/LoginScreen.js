@@ -13,39 +13,19 @@ const LoginScreen = () => {
     <Screen>
       <View style={styles.container}>
         <View style={styles.headerTextContainer}>
-          <Text style={styles.headerText}>Registrati per utilizzare l'app</Text>
+          <Text style={styles.headerText}>
+            Accedi con il tuo account Diveedi
+          </Text>
         </View>
         <View style={styles.formContainer}>
           <Formik
             initialValues={{
-              firstName: '',
-              lastName: '',
               email: '',
               password: '',
             }}
             onSubmit={(values) => console.log(values)}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
-                <FormField
-                  autoCorrect={false}
-                  label="First Name"
-                  mode="flat"
-                  name="FirstName"
-                  onChangeText={handleChange('firstName')}
-                  onBlur={handleBlur('firstName')}
-                  placeholder="First Name"
-                  value={values.firstName}
-                />
-
-                <FormField
-                  autoCorrect={false}
-                  label="Last Name"
-                  name="LastName"
-                  onChangeText={handleChange('lastName')}
-                  onBlur={handleBlur('lastName')}
-                  placeholder="Last Name"
-                  value={values.lastName}
-                />
                 <FormField
                   autoCapitalize="none"
                   label="Email"
@@ -66,7 +46,7 @@ const LoginScreen = () => {
                   secureTextEntry={true}
                   value={values.password}
                 />
-                <Button name="Register" onPress={handleSubmit} title="Submit" />
+                <Button name="Login" onPress={handleSubmit} title="Submit" />
               </View>
             )}
           </Formik>
@@ -76,12 +56,12 @@ const LoginScreen = () => {
         </View>
         <View style={styles.socialButtonContainers}>
           <SocialButton
-            text="Continue with Google"
+            text="Sign in with Google"
             iconPath={require('../assets/icons/google.png')}
             buttonStyle={styles.googleButton}
           />
           <SocialButton
-            text="Continue with Facebook"
+            text="Sign in with Facebook"
             iconPath={require('../assets/icons/facebook.png')}
             buttonStyle={styles.facebookButton}
             textStyle={styles.facebookButtonText}
