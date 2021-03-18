@@ -22,7 +22,9 @@ const Group = ({item}) => {
             {subscriptionOffered} - {owner}
           </Text>
           <Text style={{color: colors.placeholder}}>
-            {available} posti su {total} disponibili
+            {available > 1
+              ? `${available} posti su ${total} disponibili`
+              : `${available} posto su ${total} disponibili`}
           </Text>
         </View>
       </View>
