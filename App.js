@@ -8,7 +8,8 @@ import AuthStack from './app/navigations/AuthStack';
 
 //components
 import StatusBar from './app/components/StatusBar';
-import {colors} from './app/config/colors';
+import colors from './app/config/colors';
+import AppNavigator from './app/navigations/AppNavigator';
 
 //appTheme
 const theme = {
@@ -25,7 +26,7 @@ const App = () => {
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <StatusBar />
-        <AuthStack />
+        <AppNavigator />
       </NavigationContainer>
     </PaperProvider>
   );

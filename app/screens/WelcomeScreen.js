@@ -7,7 +7,7 @@ import Text from '../components/Text';
 import Button from '../components/Button';
 
 //config
-import {colors} from '../config/colors';
+import colors from '../config/colors';
 
 const WelcomeScreen = ({navigation}) => {
   return (
