@@ -4,9 +4,9 @@ import {StyleSheet, View} from 'react-native';
 //components
 import Text from '../components/Text';
 
-const HeaderTitle = ({text}) => {
+const HeaderTitle = ({text, style}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Text style={styles.text}>{text}</Text>
     </View>
   );

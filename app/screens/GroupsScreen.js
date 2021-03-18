@@ -5,7 +5,6 @@ import HeaderTitle from '../components/HeaderTitle';
 
 //components
 import Screen from '../components/Screen';
-import Text from '../components/Text';
 
 //fakeData
 import {groups} from '../config/dummy';

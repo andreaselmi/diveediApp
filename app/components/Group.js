@@ -8,7 +8,11 @@ import colors from '../config/colors';
 
 const Group = ({item}) => {
   const {owner, subscriptionOffered, available, total} = item;
-  const imageSrc = item.avatar;
+
+  const imageSrc = item.avatar
+    ? item.avatar
+    : require('../assets/avatar/placeholder.png');
+
   return (
     <TouchableOpacity
       onPress={() => console.log('pressed')}
@@ -17,14 +21,16 @@ const Group = ({item}) => {
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={imageSrc} />
         </View>
-        <View>
+        <View style={{maxWidth: 200}}>
           <Text style={{fontWeight: 'bold'}}>
             {subscriptionOffered} - {owner}
           </Text>
           <Text style={{color: colors.placeholder}}>
-            {available > 1
-              ? `${available} posti su ${total} disponibili`
-              : `${available} posto su ${total} disponibili`}
+            {available && total
+              ? available > 1
+                ? `${available} posti su ${total} disponibili`
+                : `${available} posto su ${total} disponibili`
+              : 'Quantità di posti liberi non disponibile'}
           </Text>
         </View>
       </View>

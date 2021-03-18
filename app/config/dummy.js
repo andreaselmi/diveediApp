@@ -45,7 +45,7 @@ export const groups = [
     subscriptionOffered: 'AmazonPrime',
     avatar: require('../assets/avatar/artur.jpg'),
     total: 3,
-    available: 1,
+    available: null,
   },
   {
     id: '7',
@@ -86,5 +86,32 @@ export const groups = [
     avatar: require('../assets/avatar/john.jpg'),
     total: 5,
     available: 3,
+  },
+];
+
+export const news = [
+  {
+    id: '1',
+    title: 'NowTV arriva su Diveedi',
+    date: '16.03.2021',
+    image: require('../assets/news/nowtv.png'),
+  },
+  {
+    id: '2',
+    title: 'Disney+ si aggiorna con Star',
+    date: '19.02.2021',
+    image: require('../assets/news/disneystar.jpeg'),
+  },
+  {
+    id: '3',
+    title: 'Condividi il tuo abbonamento in palestra',
+    date: '01.02.2021',
+    image: require('../assets/news/gym.jpeg'),
+  },
+  {
+    id: '4',
+    title: "Nuova pagina gestione piani attivi. Aggiorna l'app",
+    date: '30.01.2021',
+    image: require('../assets/news/update.jpeg'),
   },
 ];
