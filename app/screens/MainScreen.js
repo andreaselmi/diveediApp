@@ -19,7 +19,7 @@ const MainScreen = () => {
 
   return (
     <Screen>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderTitle style={{marginBottom: 10}} text="Novità" />
           {news.map((item) => (
