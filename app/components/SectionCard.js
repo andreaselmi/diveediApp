@@ -1,12 +1,12 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 
-const SectionCard = ({imageUri, title, subtitle}) => {
+const SectionCard = ({imageUri, title, subtitle, textColor = '#000000'}) => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={imageUri} />
       <View style={{maxWidth: 150}}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={[styles.title, {color: textColor}]}>{title}</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
     </View>
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     height: 200,
   },
   title: {
-    color: 'white',
+    paddingTop: 10,
+    fontWeight: 'bold',
   },
   subtitle: {
     color: 'gray',

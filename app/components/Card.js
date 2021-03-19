@@ -7,17 +7,12 @@ import Text from '../components/Text';
 //config
 import colors from '../config/colors';
 
-const Card = ({item}) => {
-  const {title, date} = item;
-  const imgUri = item.image
-    ? item.image
-    : require('../assets/news/placeholder.png');
-
+const Card = ({title, subtitle, imgUri}) => {
   return (
     <View style={styles.cardContainer}>
       <View style={styles.cardHeader}>
         <Text style={{fontWeight: 'bold'}}>{title}</Text>
-        <Text style={{color: colors.placeholder}}>{date}</Text>
+        <Text style={{color: colors.placeholder}}>{subtitle}</Text>
       </View>
       <View>
         <Image style={styles.cardImg} source={imgUri} />
