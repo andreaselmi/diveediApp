@@ -110,8 +110,50 @@ export const news = [
   },
   {
     id: '4',
-    title: "Nuova pagina gestione piani attivi. Aggiorna l'app",
+    title: 'Diveedi2.0 - Nuovo aggiornamento disponibile',
     date: '30.01.2021',
     image: require('../assets/news/update.jpeg'),
+  },
+];
+
+export const sections = [
+  {
+    id: '1',
+    name: 'Netflix',
+    icon: require('../assets/logos/netflix.png'),
+    latestReleases: [
+      {
+        id: '01',
+        cover: require('../assets/covers/animalifantastici.jpeg'),
+        title: 'Animali fantastici: I crimini di Grindelwald',
+        releaseDate: '14 marzo',
+      },
+      {
+        id: '02',
+        cover: require('../assets/covers/animalifantastici.jpeg'),
+        title: 'Animali fantastici: I crimini di Grindelwald',
+        releaseDate: '14 marzo',
+      },
+      {
+        id: '03',
+        cover: require('../assets/covers/animalifantastici.jpeg'),
+        title: 'Animali fantastici: I crimini di Grindelwald',
+        releaseDate: '14 marzo',
+      },
+      {
+        id: '04',
+        cover: require('../assets/covers/animalifantastici.jpeg'),
+        title: 'Animali fantastici: I crimini di Grindelwald',
+        releaseDate: '14 marzo',
+      },
+      {
+        id: '5',
+        cover: require('../assets/covers/animalifantastici.jpeg'),
+        title: 'Animali fantastici: I crimini di Grindelwald',
+        releaseDate: '14 marzo',
+      },
+    ],
+    backgroundColor: '#2A2A2A',
+    textColor: 'white',
   },
 ];

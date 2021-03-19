@@ -9,7 +9,9 @@ import colors from '../config/colors';
 
 const Card = ({item}) => {
   const {title, date} = item;
-  const imgUri = item.image;
+  const imgUri = item.image
+    ? item.image
+    : require('../assets/news/placeholder.png');
 
   return (
     <View style={styles.cardContainer}>
