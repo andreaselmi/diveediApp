@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView, Button} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 
 //components
 import Card from '../components/Card';
@@ -13,6 +13,7 @@ import {news} from '../config/dummy';
 import {sections} from '../config/dummy';
 
 const MainScreen = () => {
+  //select from database
   const netflix = sections.find((section) => section.name === 'Netflix');
   const nowTV = sections.find((section) => section.name === 'NowTV');
   const disney = sections.find((section) => section.name === 'Disney+');
@@ -32,9 +33,9 @@ const MainScreen = () => {
           ))}
         </View>
         <View>
-          <Section item={netflix} />
-          <Section item={nowTV} />
-          <Section item={disney} />
+          <Section title="Ultime uscite" item={netflix} />
+          <Section title="Ultime uscite" item={nowTV} />
+          <Section title="Ultime uscite" item={disney} />
         </View>
       </ScrollView>
     </Screen>

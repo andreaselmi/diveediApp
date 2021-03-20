@@ -43,7 +43,7 @@ const AppNavigator = () => {
               source={
                 focused
                   ? require('../assets/logobw.png')
-                  : require('../assets/logo.png')
+                  : require('../assets/logooutline.png')
               }
               resizeMode="contain"
               style={{width: 60, height: 60}}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 
-const SectionCard = ({imageUri, title, subtitle, textColor = '#000000'}) => {
+const SectionCard = ({imageUri, title, subtitle, textColor = '#FFFFFF'}) => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={imageUri} />

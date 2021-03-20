@@ -1,19 +1,26 @@
 import React from 'react';
-import {StyleSheet, Image, View, FlatList, Button} from 'react-native';
+import {StyleSheet, Image, View, FlatList} from 'react-native';
 
 //components
 import Text from '../components/Text';
 import SectionCard from './SectionCard';
 
-const Section = ({item}) => {
+const Section = ({item, title}) => {
   const logo = item.icon || null;
   const color = item.textColor;
 
   return (
-    <View style={[styles.container, {backgroundColor: item.backgroundColor}]}>
-      <Image resizeMode="center" style={styles.logo} source={logo} />
-      <Text style={styles.header}>Ultime uscite</Text>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: item.backgroundColor || '#000000'},
+      ]}>
+      <View style={{paddingHorizontal: 20}}>
+        <Image resizeMode="center" style={styles.logo} source={logo} />
+        <Text style={[styles.title, {color: color || '#FFFFFF'}]}>{title}</Text>
+      </View>
       <FlatList
+        style={{paddingHorizontal: 20}}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         data={item.latestReleases}
@@ -36,12 +43,10 @@ export default Section;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingHorizontal: 20,
     paddingBottom: 50,
   },
-  header: {
+  title: {
     fontWeight: '900',
-    color: 'white',
     fontSize: 24,
     marginBottom: 20,
   },
