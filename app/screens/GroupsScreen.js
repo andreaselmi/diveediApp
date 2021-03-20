@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import Group from '../components/Group';
+import Group from '../containers/Group';
 import HeaderTitle from '../components/HeaderTitle';
 
 //components
@@ -15,11 +15,11 @@ const MainScreen = () => {
       <View style={styles.container}>
         <HeaderTitle text="Gruppi disponibili" />
         <FlatList
-          showsVerticalScrollIndicator={false}
           contentContainerStyle={{paddingBottom: 100}}
           data={groups}
-          renderItem={({item}) => <Group item={item} />}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}
+          renderItem={({item}) => <Group item={item} />}
         />
       </View>
     </Screen>

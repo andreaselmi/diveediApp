@@ -3,7 +3,7 @@ import {StyleSheet, Image, View, FlatList} from 'react-native';
 
 //components
 import Text from '../components/Text';
-import SectionCard from './SectionCard';
+import SectionCard from '../components/SectionCard';
 
 const Section = ({item, title}) => {
   const logo = item.icon || null;

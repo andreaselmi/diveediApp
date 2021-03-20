@@ -6,9 +6,9 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 //stacknavigator
 import GroupsScreen from '../screens/GroupsScreen';
 import MainScreen from '../screens/MainScreen';
-import AccountScreen from '../screens/AccountScreen';
 import colors from '../config/colors';
 import MainButton from './MainButton';
+import AccountNavigator from './AccountNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +53,7 @@ const AppNavigator = () => {
           tabBarButton: (props) => <MainButton {...props} />,
         }}
       />
-      <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Account" component={AccountNavigator} />
     </Tab.Navigator>
   );
 };

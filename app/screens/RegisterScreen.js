@@ -85,9 +85,9 @@ const RegisterScreen = () => {
         </View>
         <View style={styles.socialButtonContainers}>
           <SocialButton
-            text="Continue with Google"
-            iconPath={require('../assets/icons/google.png')}
             buttonStyle={styles.googleButton}
+            iconPath={require('../assets/icons/google.png')}
+            text="Continue with Google"
           />
           <SocialButton
             text="Continue with Facebook"

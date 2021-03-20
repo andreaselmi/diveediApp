@@ -9,7 +9,7 @@ import Button from '../components/Button';
 //config
 import colors from '../config/colors';
 
-const MainScreen = () => {
+const MainScreen = ({navigation}) => {
   return (
     <Screen>
       <View style={{paddingHorizontal: 20, flex: 1}}>
@@ -26,11 +26,16 @@ const MainScreen = () => {
           </Text>
         </View>
         <View style={styles.optionsContainer}>
-          <Option iconName="calendar" text="Storico Pagamenti" />
           <Option
-            style={{borderBottomColor: '#000', borderBottomWidth: 1}}
+            iconName="calendar"
+            onPress={() => navigation.navigate('Payments')}
+            text="Storico Pagamenti"
+          />
+          <Option
             iconName="albums"
+            style={{borderBottomColor: '#000', borderBottomWidth: 1}}
             text="Piani Attivi"
+            onPress={() => navigation.navigate('Plans')}
           />
         </View>
         <View style={styles.buttonContainer}>
@@ -43,27 +48,27 @@ const MainScreen = () => {
 
 const styles = StyleSheet.create({
   accountImgContainer: {
-    height: 200,
-    width: '100%',
     alignItems: 'center',
+    height: 200,
     justifyContent: 'center',
+    width: '100%',
   },
   buttonContainer: {
-    marginTop: 'auto',
     marginBottom: 50,
+    marginTop: 'auto',
   },
 
   optionsContainer: {
     marginTop: 50,
   },
   userImg: {
-    width: 150,
     height: 150,
+    width: 150,
   },
   userInfoContainer: {
-    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
   userName: {
     fontSize: 36,

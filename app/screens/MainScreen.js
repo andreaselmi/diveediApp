@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
+import _ from 'lodash';
 
 //components
 import Card from '../components/Card';
 import HeaderTitle from '../components/HeaderTitle';
 import Screen from '../components/Screen';
-import Section from '../components/Section';
-import _ from 'lodash';
+//containers
+import Section from '../containers/Section';
 
 //fakeData
 import {news} from '../config/dummy';

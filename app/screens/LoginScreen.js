@@ -2,11 +2,11 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 
-import Screen from '../components/Screen';
-import Text from '../components/Text';
-import SocialButton from '../components/SocialButton';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
+import Screen from '../components/Screen';
+import SocialButton from '../components/SocialButton';
+import Text from '../components/Text';
 
 import * as yup from 'yup';
 
@@ -36,9 +36,9 @@ const LoginScreen = () => {
               <View>
                 <FormField
                   autoCapitalize="none"
+                  keyboardType="email-address"
                   label="Email"
                   name="email"
-                  keyboardType="email-address"
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   placeholder="Email"
