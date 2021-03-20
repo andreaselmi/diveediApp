@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 //components
-import Text from '../components/Text';
+import Text from './Text';
 import ImageContainer from './ImageContainer';
 
 //config

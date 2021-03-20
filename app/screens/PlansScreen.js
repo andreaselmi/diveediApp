@@ -6,11 +6,21 @@ import Screen from '../components/Screen';
 const PlansScreen = () => {
   return (
     <Screen>
-      <Text>Plans Screen</Text>
+      <View style={styles.container}>
+        <Text>Plans Screen</Text>
+        <View style={styles.spendingContainer}>{/* total spending */}</View>
+        {/* TODO total plane active */}
+        <View style={styles.incomesContainer}>{/*  total incomes */}</View>
+        {/* TODO total plane active */}
+      </View>
     </Screen>
   );
 };
 
 export default PlansScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+  },
+});
