@@ -3,11 +3,12 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import colors from '../config/colors';
 
-const TouchableContainer = ({children, onPress, style}) => {
+const TouchableContainer = ({children, onPress, style, ...restProps}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, {borderBottomColor: colors.lightGray}, style]}>
+      style={[styles.container, {borderBottomColor: colors.lightGray}, style]}
+      {...restProps}>
       {children}
     </TouchableOpacity>
   );

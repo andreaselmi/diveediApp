@@ -1,8 +1,9 @@
 import React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 //components
 import Text from '../components/Text';
+import ImageContainer from './ImageContainer';
 
 //config
 import colors from '../config/colors';
@@ -14,9 +15,7 @@ const Card = ({title, subtitle, imgUri}) => {
         <Text style={{fontWeight: 'bold'}}>{title}</Text>
         <Text style={{color: colors.placeholder}}>{subtitle}</Text>
       </View>
-      <View>
-        <Image style={styles.cardImg} source={imgUri} />
-      </View>
+      <ImageContainer style={styles.cardImg} source={imgUri} />
     </View>
   );
 };

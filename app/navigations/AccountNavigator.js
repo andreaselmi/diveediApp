@@ -8,12 +8,24 @@ const Stack = createStackNavigator();
 
 const AccountNavigator = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{headerShown: false}}
-      initialRouteName="Account">
-      <Stack.Screen name="Account" component={AccountScreen} />
-      <Stack.Screen name="Payments" component={PaymentScreen} />
-      <Stack.Screen name="Plans" component={PlansScreen} />
+    <Stack.Navigator initialRouteName="Account">
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Account"
+        component={AccountScreen}
+      />
+      <Stack.Screen
+        options={{title: 'Movimenti'}}
+        name="Payments"
+        component={PaymentScreen}
+      />
+      <Stack.Screen
+        options={{title: 'Piani'}}
+        name="Plans"
+        component={PlansScreen}
+      />
     </Stack.Navigator>
   );
 };

@@ -9,7 +9,7 @@ import ImageContainer from '../components/ImageContainer';
 //config
 import colors from '../config/colors';
 
-const PaymentInfo = ({item, onPress, style}) => {
+const PaymentInfo = ({item, onPress}) => {
   const {serviceName, date, cost, transferType} = item;
   const imageUri = item.image || null;
 
@@ -22,10 +22,12 @@ const PaymentInfo = ({item, onPress, style}) => {
   };
 
   return (
-    <TouchableContainer onPress={onPress} style={style}>
+    <TouchableContainer activeOpacity={1} onPress={onPress}>
       <View style={styles.groupLabel}>
-        {imageUri ? <ImageContainer source={imageUri} /> : null}
-        <View style={{maxWidth: 200}}>
+        {imageUri ? (
+          <ImageContainer resizeMode="center" source={imageUri} />
+        ) : null}
+        <View style={styles.textContainer}>
           <Text style={{fontWeight: 'bold'}}>{serviceName}</Text>
           <Text style={{color: colors.placeholder}}>{date}</Text>
         </View>
@@ -41,10 +43,8 @@ const styles = StyleSheet.create({
   groupLabel: {
     flexDirection: 'row',
   },
-  groupTitle: {
-    fontWeight: 'bold',
-  },
-  groupSubTitle: {
-    fontWeight: 'bold',
+  textContainer: {
+    maxWidth: 200,
+    marginLeft: 20,
   },
 });
