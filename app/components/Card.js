@@ -8,14 +8,18 @@ import ImageContainer from './ImageContainer';
 //config
 import colors from '../config/colors';
 
-const Card = ({title, subtitle, imgUri}) => {
+const Card = ({title, imgUri, style, subtitle}) => {
   return (
-    <View style={styles.cardContainer}>
+    <View style={[styles.cardContainer, style]}>
       <View style={styles.cardHeader}>
-        <Text style={{fontWeight: 'bold'}}>{title}</Text>
-        <Text style={{color: colors.placeholder}}>{subtitle}</Text>
+        <Text style={[{fontWeight: 'bold'}, styles.text]}>{title}</Text>
+        <Text style={[{color: colors.placeholder}, styles.text]}>
+          {subtitle}
+        </Text>
       </View>
-      <ImageContainer style={styles.cardImg} source={imgUri} />
+      {imgUri ? (
+        <ImageContainer style={styles.cardImg} source={imgUri} />
+      ) : null}
     </View>
   );
 };
@@ -30,11 +34,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   cardHeader: {
-    maxWidth: 220,
+    flex: 1,
     justifyContent: 'center',
+    marginRight: 10,
   },
   cardImg: {
     width: 130,
     height: 100,
+  },
+  text: {
+    flexWrap: 'wrap',
   },
 });
