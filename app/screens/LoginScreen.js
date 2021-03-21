@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
+import auth from '@react-native-firebase/auth';
+import * as yup from 'yup';
 
+//components
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 import Screen from '../components/Screen';
 import SocialButton from '../components/SocialButton';
 import Text from '../components/Text';
 
-import * as yup from 'yup';
+//config
+import colors from '../config/colors';
 
 let validationSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -16,6 +20,25 @@ let validationSchema = yup.object().shape({
 });
 
 const LoginScreen = () => {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const login = ({email, password}) => {
+    setLoading(true);
+    setError(null);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => {
+        if (error.code === 'auth/user-not-found') {
+          setError('Nessun utente trovato!');
+        } else if (error.code === 'auth/wrong-password') {
+          setError('Password errata!');
+        } else {
+          setError('Impossibile accedere');
+        }
+        setLoading(false);
+      });
+  };
   return (
     <Screen>
       <View style={styles.container}>
@@ -30,7 +53,7 @@ const LoginScreen = () => {
               email: '',
               password: '',
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={login}
             validationSchema={validationSchema}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
@@ -54,7 +77,15 @@ const LoginScreen = () => {
                   secureTextEntry={true}
                   value={values.password}
                 />
-                <Button name="Login" onPress={handleSubmit} title="Submit" />
+                {error && (
+                  <Text style={{color: colors.danger, top: -10}}>{error}</Text>
+                )}
+                <Button
+                  disabled={loading}
+                  name="Login"
+                  onPress={handleSubmit}
+                  title="Submit"
+                />
               </View>
             )}
           </Formik>

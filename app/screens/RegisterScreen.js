@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import auth from '@react-native-firebase/auth';
 
+//components
 import Screen from '../components/Screen';
 import Text from '../components/Text';
 import SocialButton from '../components/SocialButton';
@@ -10,13 +12,32 @@ import Button from '../components/Button';
 import FormField from '../components/FormField';
 
 let validationSchema = yup.object().shape({
-  firstName: yup.string().required().min(2),
-  lastName: yup.string().email().required().min(2),
+  // firstName: yup.string().required().min(2),
+  // lastName: yup.string().email().required().min(2),
   email: yup.string().email().required(),
   password: yup.string().required().min(6),
 });
 
 const RegisterScreen = () => {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const register = ({email, password}) => {
+    setError(null);
+    setLoading(true);
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          setError('Email già in uso');
+        } else if (error.code === 'auth/invalid-password') {
+          setError('Password non valida');
+        }
+
+        setLoading(false);
+      });
+  };
+
   return (
     <Screen>
       <View style={styles.container}>
@@ -31,7 +52,7 @@ const RegisterScreen = () => {
               email: '',
               password: '',
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={register}
             validationSchema={validationSchema}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
@@ -75,7 +96,15 @@ const RegisterScreen = () => {
                   secureTextEntry={true}
                   value={values.password}
                 />
-                <Button name="Register" onPress={handleSubmit} title="Submit" />
+                {error && (
+                  <Text style={{color: colors.danger, top: -10}}>{error}</Text>
+                )}
+                <Button
+                  disabled={loading}
+                  name="Register"
+                  onPress={handleSubmit}
+                  title="Submit"
+                />
               </View>
             )}
           </Formik>

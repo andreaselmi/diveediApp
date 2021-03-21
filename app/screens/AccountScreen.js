@@ -1,15 +1,21 @@
 import React from 'react';
 import {Image, View, StyleSheet} from 'react-native';
-import Option from '../components/Option';
+import auth from '@react-native-firebase/auth';
 
+//components
+import Button from '../components/Button';
+import Option from '../components/Option';
 import Screen from '../components/Screen';
 import Text from '../components/Text';
-import Button from '../components/Button';
 
 //config
 import colors from '../config/colors';
 
 const MainScreen = ({navigation}) => {
+  const logout = () => {
+    auth().signOut();
+  };
+
   return (
     <Screen>
       <View style={{paddingHorizontal: 20, flex: 1}}>
@@ -39,7 +45,7 @@ const MainScreen = ({navigation}) => {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <Button name="Logout" onPress={() => console.log('Pressed')} />
+          <Button name="Logout" onPress={() => logout()} />
         </View>
       </View>
     </Screen>
