@@ -294,38 +294,38 @@ export const movements = {
 export const activePlans = {
   debit: [
     {
-      id: 1,
+      id: '1',
       name: 'Disney+',
       cost: '6.00',
       activationDate: '15.08.2020',
+      logo: require('../assets/logos/disney+.png'),
       viewStyle: {
         backgroundColor: '#4a62d8',
         textColor: '#FFFFFF',
-        logo: require('../assets/logos/disney+.png'),
       },
     },
     {
-      id: 1,
+      id: '2',
       name: 'Spotify',
       cost: '4.50',
       activationDate: '08.08.2020',
+      logo: require('../assets/logos/spotify.png'),
       viewStyle: {
         backgroundColor: '#191414',
         textColor: '#FFFFFF',
-        logo: require('../assets/logos/spotify.png'),
       },
     },
   ],
   accredit: [
     {
-      id: 1,
+      id: '1',
       name: 'Netflix',
       cost: '5.00',
       activationDate: '20.09.2020',
+      logo: require('../assets/logos/netflix.png'),
       viewStyle: {
         backgroundColor: '#2A2A2A',
         textColor: '#FFFFFF',
-        logo: require('../assets/logos/netflix.png'),
       },
     },
   ],
