@@ -227,7 +227,7 @@ export const movements = {
       serviceName: 'Disney+',
       date: '15.12.2020',
       image: require('../assets/logos/disney+.png'),
-      cost: '3.00',
+      cost: '6.00',
       transferType: 'debit',
     },
     {
@@ -235,7 +235,7 @@ export const movements = {
       serviceName: 'Spotify',
       date: '08.12.2020',
       image: require('../assets/logos/spotify.png'),
-      cost: '6.00',
+      cost: '4.50',
       transferType: 'debit',
     },
     {
@@ -251,7 +251,7 @@ export const movements = {
       serviceName: 'Disney+',
       date: '15.11.2020',
       image: require('../assets/logos/disney+.png'),
-      cost: '3.00',
+      cost: '6.00',
       transferType: 'debit',
     },
     {
@@ -259,7 +259,7 @@ export const movements = {
       serviceName: 'Spotify',
       date: '08.11.2020',
       image: require('../assets/logos/spotify.png'),
-      cost: '6.00',
+      cost: '4.50',
       transferType: 'debit',
     },
     {
@@ -274,19 +274,59 @@ export const movements = {
   next: [
     {
       id: '1',
-      serviceName: 'Netflix',
-      date: '20.01.2021',
-      image: require('../assets/logos/netflix.png'),
-      cost: '5.00',
+      serviceName: 'Spotify',
+      date: '08.01.2021',
+      image: require('../assets/logos/spotify.png'),
+      cost: '6.00',
       transferType: 'accredit',
     },
     {
       id: '2',
       serviceName: 'Disney+',
-      date: '15.12.2020',
+      date: '15.12.2021',
       image: require('../assets/logos/disney+.png'),
       cost: '3.00',
-      transferType: 'debit',
+      transferType: 'accredit',
+    },
+  ],
+};
+
+export const activePlans = {
+  debit: [
+    {
+      id: 1,
+      name: 'Disney+',
+      cost: '6.00',
+      activationDate: '15.08.2020',
+      viewStyle: {
+        backgroundColor: '#4a62d8',
+        textColor: '#FFFFFF',
+        logo: require('../assets/logos/disney+.png'),
+      },
+    },
+    {
+      id: 1,
+      name: 'Spotify',
+      cost: '4.50',
+      activationDate: '08.08.2020',
+      viewStyle: {
+        backgroundColor: '#191414',
+        textColor: '#FFFFFF',
+        logo: require('../assets/logos/spotify.png'),
+      },
+    },
+  ],
+  accredit: [
+    {
+      id: 1,
+      name: 'Netflix',
+      cost: '5.00',
+      activationDate: '20.09.2020',
+      viewStyle: {
+        backgroundColor: '#2A2A2A',
+        textColor: '#FFFFFF',
+        logo: require('../assets/logos/netflix.png'),
+      },
     },
   ],
 };
