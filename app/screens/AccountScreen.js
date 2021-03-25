@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, View, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 //components
 import Button from '../components/Button';
@@ -12,7 +13,8 @@ import Text from '../components/Text';
 import colors from '../config/colors';
 
 const MainScreen = ({navigation}) => {
-  const logout = () => {
+  const logout = async () => {
+    await GoogleSignin.signOut();
     auth().signOut();
   };
 
