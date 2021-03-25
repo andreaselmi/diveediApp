@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 //components
 import Screen from '../components/Screen';
@@ -25,20 +26,30 @@ const RegisterScreen = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const register = ({email, password}) => {
+  const register = async ({email, password, firstName, lastName}) => {
     setError(null);
     setLoading(true);
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          setError('Email già in uso');
-        } else if (error.code === 'auth/invalid-password') {
-          setError('Password non valida');
-        }
+    try {
+      await auth().createUserWithEmailAndPassword(email, password);
+      await firestore()
+        .collection('users')
+        .doc(auth().currentUser.uid)
+        .set({
+          createdAt: firestore.Timestamp.fromDate(new Date()),
+          email: email,
+          fullName: `${firstName} ${lastName}`,
+          uid: auth().currentUser.uid,
+          userImg: null,
+        });
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email già in uso');
+      } else if (error.code === 'auth/invalid-password') {
+        setError('Password non valida');
+      }
 
-        setLoading(false);
-      });
+      setLoading(false);
+    }
   };
 
   return (
