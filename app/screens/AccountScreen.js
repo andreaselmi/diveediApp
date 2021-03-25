@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, View, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {useSelector} from 'react-redux';
 
 //components
 import Button from '../components/Button';
@@ -13,25 +14,35 @@ import Text from '../components/Text';
 import colors from '../config/colors';
 
 const MainScreen = ({navigation}) => {
+  const currentUser = useSelector((state) => state.currentUser);
+
   const logout = async () => {
     await GoogleSignin.signOut();
     auth().signOut();
+  };
+
+  const profileImg = (img) => {
+    if (img) {
+      return <Image style={styles.userImg} source={{uri: img}} />;
+    } else {
+      return (
+        <Image
+          style={styles.logoImg}
+          source={require('../assets/logobw.png')}
+        />
+      );
+    }
   };
 
   return (
     <Screen>
       <View style={{paddingHorizontal: 20, flex: 1}}>
         <View style={styles.accountImgContainer}>
-          <Image
-            style={styles.userImg}
-            source={require('../assets/logobw.png')}
-          />
+          {profileImg(currentUser.userImg)}
         </View>
         <View style={styles.userInfoContainer}>
           <Text style={styles.userName}>Andrea Selmi</Text>
-          <Text style={{color: colors.placeholder}}>
-            andreaselmi90@gmail.com
-          </Text>
+          <Text style={{color: colors.placeholder}}>{currentUser.email}</Text>
         </View>
         <View style={styles.optionsContainer}>
           <Option
@@ -70,6 +81,11 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   userImg: {
+    height: 150,
+    width: 150,
+    borderRadius: 100,
+  },
+  logoImg: {
     height: 150,
     width: 150,
   },
