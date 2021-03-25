@@ -15,7 +15,7 @@ import Text from '../components/Text';
 import colors from '../config/colors';
 
 //auth
-import {signInWithFacebook} from '../auth/socialAuth';
+import {signInWithFacebook, signInWithGoogle} from '../auth/socialAuth';
 
 let validationSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -42,6 +42,7 @@ const LoginScreen = () => {
         setLoading(false);
       });
   };
+
   return (
     <Screen>
       <View style={styles.container}>
@@ -98,6 +99,7 @@ const LoginScreen = () => {
         </View>
         <View style={styles.socialButtonContainers}>
           <SocialButton
+            onPress={() => signInWithGoogle()}
             text="Sign in with Google"
             iconPath={require('../assets/icons/google.png')}
             buttonStyle={styles.googleButton}
