@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">diveediApp</string>
+    <string name="facebook_app_id">454040582506252</string>
+    <string name="fb_login_protocol_scheme">fb454040582506252</string>
 </resources>
