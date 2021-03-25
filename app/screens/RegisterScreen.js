@@ -11,6 +11,9 @@ import SocialButton from '../components/SocialButton';
 import Button from '../components/Button';
 import FormField from '../components/FormField';
 
+//auth
+import {signInWithFacebook} from '../auth/socialAuth';
+
 let validationSchema = yup.object().shape({
   // firstName: yup.string().required().min(2),
   // lastName: yup.string().email().required().min(2),
@@ -119,6 +122,7 @@ const RegisterScreen = () => {
             text="Continue with Google"
           />
           <SocialButton
+            onPress={() => signInWithFacebook()}
             text="Continue with Facebook"
             iconPath={require('../assets/icons/facebook.png')}
             buttonStyle={styles.facebookButton}
