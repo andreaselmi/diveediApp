@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Text, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
