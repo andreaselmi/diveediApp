@@ -18,6 +18,7 @@
 		5B5BC4716F77BAE05EE70306 /* libPods-diveediApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB504841484E0D0A26ED4A6 /* libPods-diveediApp-tvOS.a */; };
 		6B17D6612601292B0070BEE9 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 6B17D6602601292A0070BEE9 /* fonts */; };
 		6B1CC41A260795900099ABE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B1CC419260795900099ABE5 /* GoogleService-Info.plist */; };
+		6B378C74260CA927004AB9B0 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B378C73260CA927004AB9B0 /* File.swift */; };
 		70672F8605A83D668B24A4C3 /* libPods-diveediApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEA693FB3EA842F2B191283 /* libPods-diveediApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B57E47174546DDB3A64309B1 /* libPods-diveediApp-diveediAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2335A29151783EF36728824 /* libPods-diveediApp-diveediAppTests.a */; };
@@ -59,6 +60,8 @@
 		6AB504841484E0D0A26ED4A6 /* libPods-diveediApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-diveediApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B17D6602601292A0070BEE9 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		6B1CC419260795900099ABE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6B378C72260CA926004AB9B0 /* diveediApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "diveediApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B378C73260CA927004AB9B0 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		737D2970006D3146E5CB03CF /* Pods-diveediApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diveediApp.debug.xcconfig"; path = "Target Support Files/Pods-diveediApp/Pods-diveediApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7C084E621E6430775DDA11A4 /* Pods-diveediApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diveediApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-diveediApp-tvOSTests/Pods-diveediApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = diveediApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6B378C73260CA927004AB9B0 /* File.swift */,
 				6B1CC419260795900099ABE5 /* GoogleService-Info.plist */,
 				6B17D6602601292A0070BEE9 /* fonts */,
 				13B07FAE1A68108700A75B9A /* diveediApp */,
@@ -171,6 +175,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F8594C33E4DABEE3846818FD /* Pods */,
+				6B378C72260CA926004AB9B0 /* diveediApp-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -300,7 +305,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -416,6 +421,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-diveediApp-diveediAppTests/Pods-diveediApp-diveediAppTests-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -436,6 +442,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -510,6 +517,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-diveediApp/Pods-diveediApp-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -530,6 +538,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -651,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				6B378C74260CA927004AB9B0 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,6 +702,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4254B3EF1CC284341B5D864 /* Pods-diveediApp-diveediAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -715,6 +726,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF3184C83AC4F0CCEA742F5A /* Pods-diveediApp-diveediAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = diveediAppTests/Info.plist;
@@ -746,8 +758,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.diveediapp;
 				PRODUCT_NAME = diveediApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "diveediApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -768,8 +781,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.diveediapp;
 				PRODUCT_NAME = diveediApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "diveediApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

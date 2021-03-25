@@ -20,6 +20,7 @@
     "lodash": "^4.17.21",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-fbsdk": "^3.0.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-paper": "^4.7.2",
     "react-native-reanimated": "^2.0.0",
