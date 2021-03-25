@@ -1,4 +1,9 @@
 PODS:
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.5)
   - CocoaLibEvent (1.0.0)
@@ -11,6 +16,20 @@ PODS:
     - React-Core (= 0.63.4)
     - React-jsi (= 0.63.4)
     - ReactCommon/turbomodule/core (= 0.63.4)
+  - FBSDKCoreKit (8.2.0):
+    - FBSDKCoreKit/Basics (= 8.2.0)
+    - FBSDKCoreKit/Core (= 8.2.0)
+  - FBSDKCoreKit/Basics (8.2.0)
+  - FBSDKCoreKit/Core (8.2.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (8.2.0):
+    - FBSDKLoginKit/Login (= 8.2.0)
+  - FBSDKLoginKit/Login (8.2.0):
+    - FBSDKCoreKit (~> 8.2.0)
+  - FBSDKShareKit (8.2.0):
+    - FBSDKShareKit/Share (= 8.2.0)
+  - FBSDKShareKit/Share (8.2.0):
+    - FBSDKCoreKit (~> 8.2.0)
   - Firebase/Auth (7.8.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.8.0)
@@ -90,6 +109,10 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30907.0)
     - PromisesObjC (~> 1.2)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.3.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -105,7 +128,14 @@ PODS:
   - "GoogleUtilities/NSData+zlib (7.3.1)"
   - GoogleUtilities/Reachability (7.3.1):
     - GoogleUtilities/Logger
+  - GTMAppAuth (1.1.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher (~> 1.4)
+  - GTMSessionFetcher (1.5.0):
+    - GTMSessionFetcher/Full (= 1.5.0)
   - GTMSessionFetcher/Core (1.5.0)
+  - GTMSessionFetcher/Full (1.5.0):
+    - GTMSessionFetcher/Core (= 1.5.0)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -281,6 +311,20 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
+  - react-native-fbsdk (3.0.0):
+    - React
+    - react-native-fbsdk/Core (= 3.0.0)
+    - react-native-fbsdk/Login (= 3.0.0)
+    - react-native-fbsdk/Share (= 3.0.0)
+  - react-native-fbsdk/Core (3.0.0):
+    - FBSDKCoreKit (~> 8.1)
+    - React
+  - react-native-fbsdk/Login (3.0.0):
+    - FBSDKLoginKit (~> 8.1)
+    - React
+  - react-native-fbsdk/Share (3.0.0):
+    - FBSDKShareKit (~> 8.1)
+    - React
   - react-native-safe-area-context (3.2.0):
     - React-Core
   - React-RCTActionSheet (0.63.4):
@@ -353,6 +397,9 @@ PODS:
     - React-Core
     - RNFBApp
   - RNGestureHandler (1.10.3):
+    - React-Core
+  - RNGoogleSignin (6.0.0):
+    - GoogleSignIn (~> 5.0.0)
     - React-Core
   - RNReanimated (2.0.0):
     - DoubleConversion
@@ -428,6 +475,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -443,6 +491,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -450,9 +499,13 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -465,7 +518,9 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - GoogleDataTransport
+    - GoogleSignIn
     - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - nanopb
     - OpenSSL-Universal
@@ -503,6 +558,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-fbsdk:
+    :path: "../node_modules/react-native-fbsdk"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-RCTActionSheet:
@@ -533,6 +590,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNGoogleSignin:
+    :path: "../node_modules/@react-native-google-signin/google-signin"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -543,12 +602,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
+  FBSDKCoreKit: 4afd6ff53d8133a433dbcda44451c9498f8c6ce4
+  FBSDKLoginKit: 7181765f2524d7ebf82d9629066c8e6caafc99d0
+  FBSDKShareKit: 0c0d51b3af47075a85ed9bea0e28b2fc70e3594b
   Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
   FirebaseAuth: 667e576a716f6f9fe31687791406f61135002d47
   FirebaseCore: 049029df3096e5c118917029be7da75ee16f3b1b
@@ -563,7 +626,9 @@ SPEC CHECKSUMS:
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleDataTransport: b006084b73915a42c28a3466961a4edda3065da6
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
+  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
@@ -578,6 +643,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
+  react-native-fbsdk: 8e92c7a334fd8d9c2b5d8b8fcd7ae2c314161099
   react-native-safe-area-context: e471852c5ed67eea4b10c5d9d43c1cebae3b231d
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
@@ -593,6 +659,7 @@ SPEC CHECKSUMS:
   RNFBApp: bb830cc7f7598e46437b833adc841df345e19e2f
   RNFBAuth: d011f1b1a066a8bceba63c42369de9c5ce68de5e
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNGoogleSignin: 111fd4792913208f338fe3178005f7a22e490ff9
   RNReanimated: 5231286440b796e09df3bfa5c1b12b02bfe07664
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4

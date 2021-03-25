@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Text, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 import AuthStack from './AuthStack';
 import AppNavigator from './AppNavigator';
@@ -16,6 +17,10 @@ const Routes = () => {
   }
 
   useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '704312833987-fm3vsdf6kkqtvff9i1iuqs62h114kql1.apps.googleusercontent.com',
+    });
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
