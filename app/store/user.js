@@ -17,8 +17,11 @@ const userSlice = createSlice({
     setNoUser: (state) => {
       state.currentUser = null;
     },
+    setUserImg: (state, action) => {
+      state.currentUser.userImg = action.payload.userImg;
+    },
   },
 });
 
-export const {setCurrentUser, setNoUser} = userSlice.actions;
+export const {setCurrentUser, setNoUser, setUserImg} = userSlice.actions;
 export default userSlice.reducer;
