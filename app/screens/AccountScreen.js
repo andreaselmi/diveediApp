@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, View, StyleSheet, TouchableOpacity} from 'react-native';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import ImagePicker from 'react-native-image-crop-picker';
+
+//auth
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {useSelector} from 'react-redux';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
 //components
 import Button from '../components/Button';
@@ -14,12 +16,34 @@ import Text from '../components/Text';
 //config
 import colors from '../config/colors';
 
+//store
+import {useSelector, useDispatch} from 'react-redux';
+import {setUserImg} from '../store/user';
+
 const MainScreen = ({navigation}) => {
   const currentUser = useSelector((state) => state.currentUser);
+  const [image, setImage] = useState(null);
+  const dispatch = useDispatch();
 
   const logout = async () => {
     await GoogleSignin.signOut();
     auth().signOut();
+  };
+
+  const pickImg = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then((image) => {
+      const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
+      setImage(imageUri);
+      dispatch(
+        setUserImg({
+          userImg: imageUri,
+        }),
+      );
+    });
   };
 
   const profileImg = (img) => {
@@ -27,17 +51,10 @@ const MainScreen = ({navigation}) => {
       return <Image style={styles.userImg} source={{uri: img}} />;
     } else {
       return (
-        <>
-          <Image
-            style={styles.logoImg}
-            source={require('../assets/logobw.png')}
-          />
-          <TouchableOpacity
-            onPress={() => console.log('pressed')}
-            style={{position: 'absolute', top: 20, right: 70}}>
-            <IonIcon name="camera-outline" size={30} color={colors.dark} />
-          </TouchableOpacity>
-        </>
+        <Image
+          style={styles.logoImg}
+          source={require('../assets/logobw.png')}
+        />
       );
     }
   };
@@ -46,10 +63,20 @@ const MainScreen = ({navigation}) => {
     <Screen>
       <View style={{paddingHorizontal: 20, flex: 1}}>
         <View style={styles.accountImgContainer}>
-          {profileImg(currentUser.userImg)}
+          {profileImg(currentUser.userImg || image || null)}
+          {image || !currentUser.userImg ? (
+            <TouchableOpacity
+              onPress={() => pickImg()}
+              style={[
+                styles.pickerImgIcon,
+                {backgroundColor: colors.lightGray},
+              ]}>
+              <IonIcon name="camera" size={24} color={colors.dark} />
+            </TouchableOpacity>
+          ) : null}
         </View>
         <View style={styles.userInfoContainer}>
-          <Text style={styles.userName}>Andrea Selmi</Text>
+          <Text style={styles.userName}>{currentUser.fullName}</Text>
           <Text style={{color: colors.placeholder}}>{currentUser.email}</Text>
         </View>
         <View style={styles.optionsContainer}>
@@ -88,10 +115,20 @@ const styles = StyleSheet.create({
   optionsContainer: {
     marginTop: 50,
   },
+  pickerImgIcon: {
+    alignItems: 'center',
+    borderRadius: 50,
+    bottom: 20,
+    height: 40,
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 120,
+    width: 40,
+  },
   userImg: {
+    borderRadius: 100,
     height: 150,
     width: 150,
-    borderRadius: 100,
   },
   logoImg: {
     height: 150,

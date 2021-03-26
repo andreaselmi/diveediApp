@@ -76,8 +76,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>AVCaptureDeviceInput
+AVCaptureDeviceInput
+AVCaptureDeviceInput</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>UIImagePickerController or PHPhotoLibrary requestAuthorization: used in conjunction with any of the following classes: PHAsset PHAssetCollection PHCollection PHCollectionList</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

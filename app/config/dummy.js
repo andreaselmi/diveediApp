@@ -315,6 +315,17 @@ export const activePlans = {
         textColor: '#FFFFFF',
       },
     },
+    {
+      id: '3',
+      name: 'NowTV',
+      cost: '7.50',
+      activationDate: '30.06.2020',
+      logo: require('../assets/logos/nowtv.png'),
+      viewStyle: {
+        backgroundColor: '#FEB000',
+        textColor: '#000000',
+      },
+    },
   ],
   accredit: [
     {

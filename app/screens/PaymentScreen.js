@@ -34,8 +34,7 @@ const PaymentScreen = () => {
         />
         <View style={styles.nextMovContainer}>
           <HeaderTitle text="Prossimo movimento" />
-          <View
-            style={[styles.cardContainer, {backgroundColor: colors.medium}]}>
+          <View style={[styles.cardContainer, {backgroundColor: colors.dark}]}>
             <View style={styles.nextMovHeader}>
               <ImageContainer
                 style={styles.nextMovImg}

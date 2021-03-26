@@ -15,7 +15,7 @@ const Card = ({activePlans, period = 'month', type}) => {
   };
 
   return (
-    <View style={[styles.spendingContainer, {backgroundColor: colors.medium}]}>
+    <View style={[styles.spendingContainer, {backgroundColor: colors.dark}]}>
       <View style={[styles.spendingTextContainer]}>
         <Text
           style={{
