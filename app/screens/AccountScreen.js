@@ -1,8 +1,9 @@
 import React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useSelector} from 'react-redux';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
 //components
 import Button from '../components/Button';
@@ -26,10 +27,17 @@ const MainScreen = ({navigation}) => {
       return <Image style={styles.userImg} source={{uri: img}} />;
     } else {
       return (
-        <Image
-          style={styles.logoImg}
-          source={require('../assets/logobw.png')}
-        />
+        <>
+          <Image
+            style={styles.logoImg}
+            source={require('../assets/logobw.png')}
+          />
+          <TouchableOpacity
+            onPress={() => console.log('pressed')}
+            style={{position: 'absolute', top: 20, right: 70}}>
+            <IonIcon name="camera-outline" size={30} color={colors.dark} />
+          </TouchableOpacity>
+        </>
       );
     }
   };

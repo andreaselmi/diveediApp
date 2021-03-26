@@ -8,7 +8,7 @@ export const signInWithFacebook = async () => {
     'public_profile',
     'email',
   ]);
-
+  //TODO sistemare gli errori
   if (result.isCancelled) {
     throw 'User cancelled the login process';
   }
