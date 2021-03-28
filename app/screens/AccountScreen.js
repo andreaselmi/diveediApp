@@ -52,7 +52,6 @@ const MainScreen = ({navigation}) => {
 
     //TODO
 
-    // const uploadUri = image;
     // let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
 
     // // Add timestamp to File Name
@@ -62,6 +61,7 @@ const MainScreen = ({navigation}) => {
 
     setIsLoading(true);
 
+    const uploadUri = image;
     const storageRef = storage().ref(`photos/${currentUser.uid}`);
     const task = storageRef.putFile(uploadUri);
 
