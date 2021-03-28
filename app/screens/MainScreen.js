@@ -14,11 +14,6 @@ import {news} from '../config/dummy';
 import {sections} from '../config/dummy';
 
 const MainScreen = () => {
-  //select from database
-  const netflix = sections.find((section) => section.name === 'Netflix');
-  const nowTV = sections.find((section) => section.name === 'NowTV');
-  const disney = sections.find((section) => section.name === 'Disney+');
-
   return (
     <Screen>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -34,10 +29,9 @@ const MainScreen = () => {
           ))}
         </View>
         <View>
-          {/* TODO add map method */}
-          <Section title="Ultime uscite" item={netflix} />
-          <Section title="Ultime uscite" item={nowTV} />
-          <Section title="Ultime uscite" item={disney} />
+          {sections.map((section) => (
+            <Section key={section.id} title="Ultime uscite" item={section} />
+          ))}
         </View>
       </ScrollView>
     </Screen>

@@ -18,8 +18,11 @@ import colors from '../config/colors';
 import {signInWithFacebook, signInWithGoogle} from '../auth/socialAuth';
 
 let validationSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required().min(6),
+  email: yup.string().email().required('Inserisci la tua email'),
+  password: yup
+    .string()
+    .required('Inserisci la pasword')
+    .min(6, 'La password deve avere almeno 6 caratteri'),
 });
 
 const LoginScreen = () => {

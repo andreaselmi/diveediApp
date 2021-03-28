@@ -15,12 +15,20 @@ import FormField from '../components/FormField';
 //auth
 import {signInWithFacebook, signInWithGoogle} from '../auth/socialAuth';
 
-//TODO verificare che la registrazione sia gestita correttamente
 let validationSchema = yup.object().shape({
-  firstName: yup.string().required().min(2),
-  lastName: yup.string().required().min(2),
-  email: yup.string().email().required(),
-  password: yup.string().required().min(6),
+  firstName: yup
+    .string()
+    .required('Inserisci il tuo nome')
+    .min(2, 'Il nome deve essere di almeno 2 caratteri'),
+  lastName: yup
+    .string()
+    .required('Inserisci il tuo cognome')
+    .min(2, 'Il cognome deve essere di almeno 2 caratteri'),
+  email: yup.string().email().required("L'email è un campo obbligatorio"),
+  password: yup
+    .string()
+    .required('Inserisci la password')
+    .min(6, 'La password deve avere almeno 6 caratteri'),
 });
 
 const RegisterScreen = () => {

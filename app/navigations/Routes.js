@@ -15,6 +15,7 @@ import AppNavigator from './AppNavigator';
 
 //store
 import {setCurrentUser, setNoUser, setUserImg} from '../store/user';
+import {Alert} from 'react-native';
 
 const Routes = () => {
   const [initializing, setInitializing] = useState(true);
@@ -24,8 +25,7 @@ const Routes = () => {
   //Create response callback.
   const _responseInfoCallback = (error, result) => {
     if (error) {
-      //TODO errors handler
-      console.log(error);
+      Alert.alert('Impossibile recuperare dati da Facebook');
     } else {
       dispatch(
         setUserImg({

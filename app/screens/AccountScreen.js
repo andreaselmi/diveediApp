@@ -50,15 +50,6 @@ const MainScreen = ({navigation}) => {
       return null;
     }
 
-    //TODO
-
-    // let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
-
-    // // Add timestamp to File Name
-    // const extension = filename.split('.').pop();
-    // const name = filename.split('.').slice(0, -1).join('.');
-    // filename = name + Date.now() + '.' + extension;
-
     setIsLoading(true);
 
     const uploadUri = image;
