@@ -51,23 +51,18 @@ const MainScreen = ({navigation}) => {
     }
 
     //TODO
-    // setPhotoName(currentUser.userImgName);
-    // if (photoName) {
-    //   let oldImg = storage().ref('photos/' + photoName);
-    //   oldImg.delete();
-    // }
 
-    const uploadUri = image;
-    let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
+    // const uploadUri = image;
+    // let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
 
-    // Add timestamp to File Name
-    const extension = filename.split('.').pop();
-    const name = filename.split('.').slice(0, -1).join('.');
-    filename = name + Date.now() + '.' + extension;
+    // // Add timestamp to File Name
+    // const extension = filename.split('.').pop();
+    // const name = filename.split('.').slice(0, -1).join('.');
+    // filename = name + Date.now() + '.' + extension;
 
     setIsLoading(true);
 
-    const storageRef = storage().ref(`photos/${filename}`);
+    const storageRef = storage().ref(`photos/${currentUser.uid}`);
     const task = storageRef.putFile(uploadUri);
 
     try {
