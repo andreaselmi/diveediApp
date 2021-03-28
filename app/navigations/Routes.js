@@ -24,9 +24,9 @@ const Routes = () => {
   //Create response callback.
   const _responseInfoCallback = (error, result) => {
     if (error) {
+      //TODO errors handler
       console.log(error);
     } else {
-      console.log(result);
       dispatch(
         setUserImg({
           userImg: result.picture.data.url,
@@ -78,7 +78,7 @@ const Routes = () => {
           .doc(user.uid)
           .get();
 
-        const {email, uid, fullName, userImg} = userData._data;
+        const {email, uid, fullName, userImg, provider} = userData._data;
 
         dispatch(
           setCurrentUser({
@@ -86,6 +86,7 @@ const Routes = () => {
             uid,
             fullName,
             userImg,
+            provider,
           }),
         );
       }

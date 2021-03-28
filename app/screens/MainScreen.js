@@ -34,6 +34,7 @@ const MainScreen = () => {
           ))}
         </View>
         <View>
+          {/* TODO add map method */}
           <Section title="Ultime uscite" item={netflix} />
           <Section title="Ultime uscite" item={nowTV} />
           <Section title="Ultime uscite" item={disney} />

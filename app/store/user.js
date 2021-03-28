@@ -12,6 +12,7 @@ const userSlice = createSlice({
         email: action.payload.email,
         userImg: action.payload.userImg,
         uid: action.payload.uid,
+        provider: action.payload.provider,
       };
     },
     setNoUser: (state) => {

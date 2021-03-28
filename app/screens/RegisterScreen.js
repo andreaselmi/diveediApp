@@ -18,7 +18,7 @@ import {signInWithFacebook, signInWithGoogle} from '../auth/socialAuth';
 //TODO verificare che la registrazione sia gestita correttamente
 let validationSchema = yup.object().shape({
   firstName: yup.string().required().min(2),
-  lastName: yup.string().email().required().min(2),
+  lastName: yup.string().required().min(2),
   email: yup.string().email().required(),
   password: yup.string().required().min(6),
 });
@@ -37,6 +37,7 @@ const RegisterScreen = () => {
         .doc(auth().currentUser.uid)
         .set({
           createdAt: firestore.Timestamp.fromDate(new Date()),
+          provider: 'Firebase',
           email: email,
           fullName: `${firstName} ${lastName}`,
           uid: auth().currentUser.uid,

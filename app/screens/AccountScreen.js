@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, View, StyleSheet, TouchableOpacity} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import ImagePicker from 'react-native-image-crop-picker';
 
 //auth
+import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 //components
@@ -12,6 +14,7 @@ import Button from '../components/Button';
 import Option from '../components/Option';
 import Screen from '../components/Screen';
 import Text from '../components/Text';
+import ActivityIndicator from '../components/ActivityIndicator';
 
 //config
 import colors from '../config/colors';
@@ -23,6 +26,7 @@ import {setUserImg} from '../store/user';
 const MainScreen = ({navigation}) => {
   const currentUser = useSelector((state) => state.currentUser);
   const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState();
   const dispatch = useDispatch();
 
   const logout = async () => {
@@ -38,12 +42,44 @@ const MainScreen = ({navigation}) => {
     }).then((image) => {
       const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
       setImage(imageUri);
-      dispatch(
-        setUserImg({
-          userImg: imageUri,
-        }),
-      );
     });
+  };
+
+  const uploadImage = async () => {
+    if (image == null) {
+      return null;
+    }
+
+    //TODO
+    // setPhotoName(currentUser.userImgName);
+    // if (photoName) {
+    //   let oldImg = storage().ref('photos/' + photoName);
+    //   oldImg.delete();
+    // }
+
+    const uploadUri = image;
+    let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
+
+    // Add timestamp to File Name
+    const extension = filename.split('.').pop();
+    const name = filename.split('.').slice(0, -1).join('.');
+    filename = name + Date.now() + '.' + extension;
+
+    setIsLoading(true);
+
+    const storageRef = storage().ref(`photos/${filename}`);
+    const task = storageRef.putFile(uploadUri);
+
+    try {
+      await task;
+
+      const url = await storageRef.getDownloadURL();
+
+      return url;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
   };
 
   const profileImg = (img) => {
@@ -59,12 +95,33 @@ const MainScreen = ({navigation}) => {
     }
   };
 
+  const storedImg = async () => {
+    let url = await uploadImage();
+    dispatch(
+      setUserImg({
+        userImg: url,
+      }),
+    );
+    await firestore().collection('users').doc(auth().currentUser.uid).update({
+      userImg: url,
+    });
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    if (image) storedImg();
+  }, [image]);
+
   return (
     <Screen>
       <View style={{paddingHorizontal: 20, flex: 1}}>
         <View style={styles.accountImgContainer}>
-          {profileImg(currentUser.userImg || image || null)}
-          {image || !currentUser.userImg ? (
+          {isLoading ? (
+            <ActivityIndicator visible={true} />
+          ) : (
+            profileImg(currentUser.userImg || image || null)
+          )}
+          {!isLoading && currentUser.provider === 'Firebase' && (
             <TouchableOpacity
               onPress={() => pickImg()}
               style={[
@@ -73,7 +130,7 @@ const MainScreen = ({navigation}) => {
               ]}>
               <IonIcon name="camera" size={24} color={colors.dark} />
             </TouchableOpacity>
-          ) : null}
+          )}
         </View>
         <View style={styles.userInfoContainer}>
           <Text style={styles.userName}>{currentUser.fullName}</Text>
@@ -92,6 +149,7 @@ const MainScreen = ({navigation}) => {
             onPress={() => navigation.navigate('Plans')}
           />
         </View>
+
         <View style={styles.buttonContainer}>
           <Button name="Logout" onPress={() => logout()} />
         </View>
