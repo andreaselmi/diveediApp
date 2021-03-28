@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, Alert} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 //components
@@ -13,7 +13,24 @@ const Group = ({item}) => {
   const imageSrc = item.avatar || require('../assets/avatar/placeholder.png');
 
   return (
-    <TouchableContainer>
+    <TouchableContainer
+      onPress={() =>
+        Alert.alert(
+          'Invio Richiesta',
+          'Vuoi inviare una richiesta Diveedi al proprietario di questo gruppo?',
+          [
+            {
+              text: 'Cancel',
+              style: 'destructive',
+              onPress: () => Alert.alert('Richiesta annullata'),
+            },
+            {
+              text: 'Invia',
+              onPress: () => Alert.alert('Richiesta inviata'),
+            },
+          ],
+        )
+      }>
       <View style={styles.groupLabel}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={imageSrc} />
