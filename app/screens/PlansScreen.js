@@ -25,13 +25,14 @@ const PlansScreen = ({navigation}) => {
           icon="chevron-back-outline"
           text="Spesa totale"
         />
-        <DisplayTotal activePlans={debit} type="debit" />
+        {debit && <DisplayTotal activePlans={debit} type="debit" />}
         {debit.map((item) => (
           <ServiceBadge item={item} key={item.id} />
         ))}
 
         <HeaderTitle text="Incasso totale" />
-        <DisplayTotal activePlans={accredit} type="accredit" />
+
+        {accredit && <DisplayTotal activePlans={accredit} type="accredit" />}
         {accredit.map((item) => (
           <ServiceBadge item={item} key={item.id} />
         ))}

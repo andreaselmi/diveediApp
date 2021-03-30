@@ -9,7 +9,9 @@ const Card = ({activePlans, period = 'month', type}) => {
   const checkTotal = () => {
     let total = 0;
     activePlans.map((plan) => {
-      total += parseFloat(plan.cost);
+      if (!isNaN(plan.cost)) {
+        total += parseFloat(plan.cost);
+      } else return null;
     });
     return `€${total}`;
   };

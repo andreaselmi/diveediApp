@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, View, StyleSheet, Alert} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import _ from 'lodash';
 
 //components
 import Text from '../components/Text';
@@ -8,7 +9,7 @@ import colors from '../config/colors';
 import TouchableContainer from '../components/TouchableContainer';
 
 const Group = ({item}) => {
-  const {owner, subscriptionOffered, available, total} = item;
+  const {available, total} = item;
 
   const imageSrc = item.avatar || require('../assets/avatar/placeholder.png');
 
@@ -37,7 +38,8 @@ const Group = ({item}) => {
         </View>
         <View style={{maxWidth: 200}}>
           <Text style={{fontWeight: 'bold'}}>
-            {subscriptionOffered} - {owner}
+            {_.get(item, 'subscriptionOffered', 'Dato non disponibile')} -{' '}
+            {_.get(item, 'owner', 'Dato non disponibile')}
           </Text>
           <Text style={{color: colors.placeholder}}>
             {available && total

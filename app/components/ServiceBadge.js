@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import _ from 'lodash';
 
 //components
 import ImageContainer from './ImageContainer';
@@ -18,11 +19,13 @@ const ServiceBadge = ({item}) => {
         {imageUri ? (
           <ImageContainer resizeMode="center" source={imageUri} />
         ) : (
-          <Text>{item.name}</Text>
+          <Text>{_.get(item, 'name', 'Non disponibile')}</Text>
         )}
       </View>
       <View style={styles.textContainer}>
-        <Text style={{color: item.viewStyle.textColor}}>€{item.cost}</Text>
+        <Text style={{color: item.viewStyle.textColor}}>
+          €{_.get(item, 'cost', 'Non disponibile')}
+        </Text>
       </View>
     </View>
   );
