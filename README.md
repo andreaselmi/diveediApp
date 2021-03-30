@@ -2,7 +2,7 @@
 
 DiveediApp is an application developed with react-native that allows users to share the subscriptions of the main streaming services.
 
-Start2Impact project inspired by [diveedi.com] (https://www.diveedi.com)
+Start2Impact project inspired by [diveedi.com](https://www.diveedi.com)
 
 ## Installation
 
