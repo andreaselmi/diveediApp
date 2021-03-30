@@ -11,7 +11,7 @@ import DisplayTotal from '../components/plans/DisplayTotal';
 import {activePlans} from '../config/dummy';
 import ServiceBadge from '../components/ServiceBadge';
 
-const PlansScreen = () => {
+const PlansScreen = ({navigation}) => {
   const debit = activePlans.debit;
   const accredit = activePlans.accredit;
 
@@ -20,7 +20,11 @@ const PlansScreen = () => {
       <ScrollView
         contentContainerStyle={{paddingBottom: 50}}
         style={styles.container}>
-        <HeaderTitle text="Spesa totale" />
+        <HeaderTitle
+          onPress={() => navigation.navigate('Account')}
+          icon="chevron-back-outline"
+          text="Spesa totale"
+        />
         <DisplayTotal activePlans={debit} type="debit" />
         {debit.map((item) => (
           <ServiceBadge item={item} key={item.id} />

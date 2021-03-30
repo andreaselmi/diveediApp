@@ -4,6 +4,7 @@ import {Formik} from 'formik';
 import * as yup from 'yup';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
 //components
 import Screen from '../components/Screen';
@@ -31,7 +32,7 @@ let validationSchema = yup.object().shape({
     .min(6, 'La password deve avere almeno 6 caratteri'),
 });
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -65,6 +66,11 @@ const RegisterScreen = () => {
   return (
     <Screen>
       <View style={styles.container}>
+        <IonIcon
+          name="chevron-back-outline"
+          size={30}
+          onPress={() => navigation.navigate('Welcome')}
+        />
         <View style={styles.headerTextContainer}>
           <Text style={styles.headerText}>Registrati per utilizzare l'app</Text>
         </View>
@@ -170,7 +176,7 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   headerTextContainer: {
-    marginTop: 20,
+    marginTop: 10,
   },
   facebookButton: {
     backgroundColor: '#4267B2',

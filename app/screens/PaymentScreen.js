@@ -17,14 +17,18 @@ import ImageContainer from '../components/ImageContainer';
 //fakeData
 import {movements} from '../config/dummy';
 
-const PaymentScreen = () => {
+const PaymentScreen = ({navigation}) => {
   const {previous, next} = movements;
   const nextLogo = next[0].image;
 
   return (
     <Screen>
       <View style={{paddingHorizontal: 20}}>
-        <HeaderTitle text="Storico" />
+        <HeaderTitle
+          onPress={() => navigation.navigate('Account')}
+          icon="chevron-back-outline"
+          text="Storico"
+        />
         <FlatList
           showsVerticalScrollIndicator={false}
           style={styles.list}
