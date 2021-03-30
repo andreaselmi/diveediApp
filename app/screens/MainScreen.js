@@ -12,10 +12,12 @@ import Section from '../containers/Section';
 //fakeData
 import {news} from '../config/dummy';
 import {sections} from '../config/dummy';
+import OfflineNotice from '../components/OfllineNotice';
 
 const MainScreen = () => {
   return (
     <Screen>
+      <OfflineNotice />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderTitle style={{marginBottom: 10}} text="Novità" />
