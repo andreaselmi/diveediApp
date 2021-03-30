@@ -19,7 +19,7 @@ import {movements} from '../config/dummy';
 
 const PaymentScreen = ({navigation}) => {
   const {previous, next} = movements;
-  const nextLogo = next[0].image;
+  const nextLogo = next.length > 0 && next[0].image;
 
   return (
     <Screen>
@@ -29,52 +29,73 @@ const PaymentScreen = ({navigation}) => {
           icon="chevron-back-outline"
           text="Storico"
         />
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={styles.list}
-          data={previous}
-          renderItem={({item}) => <PaymentInfo item={item} />}
-          keyExtractor={(item) => item.id}
-        />
+        {previous.length === 0 ? (
+          <Text
+            style={{
+              marginVertical: 20,
+              color: colors.placeholder,
+            }}>
+            Non ci sono movimenti passati
+          </Text>
+        ) : (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            style={styles.list}
+            data={previous}
+            renderItem={({item}) => <PaymentInfo item={item} />}
+            keyExtractor={(item) => item.id}
+          />
+        )}
         <View style={styles.nextMovContainer}>
           <HeaderTitle text="Prossimo movimento" />
-          <View style={[styles.cardContainer, {backgroundColor: colors.dark}]}>
-            <View style={styles.nextMovHeader}>
-              <ImageContainer
-                style={styles.nextMovImg}
-                resizeMode="center"
-                source={nextLogo}
-              />
-              <Text style={{color: colors.placeholder}}>{next[0].date}</Text>
-              <Text style={{color: colors.placeholder}}>
-                {next[0].transferType === 'accredit'
-                  ? `+ €${next[0].cost}`
-                  : `- €${next[0].cost}`}
-              </Text>
+          {next.length === 0 ? (
+            <Text
+              style={{
+                marginVertical: 20,
+                color: colors.placeholder,
+              }}>
+              Non ci sono movimenti futuri
+            </Text>
+          ) : (
+            <View
+              style={[styles.cardContainer, {backgroundColor: colors.dark}]}>
+              <View style={styles.nextMovHeader}>
+                <ImageContainer
+                  style={styles.nextMovImg}
+                  resizeMode="center"
+                  source={nextLogo}
+                />
+                <Text style={{color: colors.placeholder}}>{next[0].date}</Text>
+                <Text style={{color: colors.placeholder}}>
+                  {next[0].transferType === 'accredit'
+                    ? `+ €${next[0].cost}`
+                    : `- €${next[0].cost}`}
+                </Text>
+              </View>
+              <View>
+                <Button
+                  buttonStyle={[
+                    styles.nextMovButton,
+                    {borderColor: colors.primary},
+                  ]}
+                  mode="outlined"
+                  name="Gestisci"
+                  onPress={() => console.log('pressed')}
+                  textStyle={styles.nextMovButtonText}
+                />
+                <Button
+                  buttonStyle={[
+                    styles.nextMovButton,
+                    {borderColor: colors.primary},
+                  ]}
+                  mode="outlined"
+                  name="Cancella"
+                  onPress={() => console.log('pressed')}
+                  textStyle={styles.nextMovButtonText}
+                />
+              </View>
             </View>
-            <View>
-              <Button
-                buttonStyle={[
-                  styles.nextMovButton,
-                  {borderColor: colors.primary},
-                ]}
-                mode="outlined"
-                name="Gestisci"
-                onPress={() => console.log('pressed')}
-                textStyle={styles.nextMovButtonText}
-              />
-              <Button
-                buttonStyle={[
-                  styles.nextMovButton,
-                  {borderColor: colors.primary},
-                ]}
-                mode="outlined"
-                name="Cancella"
-                onPress={() => console.log('pressed')}
-                textStyle={styles.nextMovButtonText}
-              />
-            </View>
-          </View>
+          )}
         </View>
       </View>
     </Screen>
