@@ -4,6 +4,7 @@
 ![Simulator Screen Shot - iPhone 11 - 2021-03-30 at 12 30 08](https://user-images.githubusercontent.com/65682335/113014290-c3177a00-917c-11eb-9b0b-28f79549e201.png)
 ![Simulator Screen Shot - iPhone 11 - 2021-03-30 at 12 30 10](https://user-images.githubusercontent.com/65682335/113014293-c3b01080-917c-11eb-961f-e8f3a0ee8c48.png)
 ![Simulator Screen Shot - iPhone 11 - 2021-03-30 at 12 30 32](https://user-images.githubusercontent.com/65682335/113014298-c3b01080-917c-11eb-8f95-89edf06830d4.png)
+![Simulator Screen Shot - iPhone 11 - 2021-03-30 at 17 26 15](https://user-images.githubusercontent.com/65682335/113014711-1d183f80-917d-11eb-9cd8-7037ec37c4dd.png)
 
 
 DiveediApp is an application developed with react-native that allows users to share the subscriptions of the main streaming services.
