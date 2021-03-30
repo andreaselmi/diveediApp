@@ -22,8 +22,6 @@ const theme = {
   },
 };
 
-//TODO splash screen
-
 const App = () => {
   const store = configureStore();
 
