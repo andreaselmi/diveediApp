@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import SplashScreen from 'react-native-splash-screen';
 
 //components
 import StatusBar from './app/components/StatusBar';
@@ -25,6 +26,10 @@ const theme = {
 
 const App = () => {
   const store = configureStore();
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <Provider store={store}>
