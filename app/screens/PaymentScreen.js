@@ -21,7 +21,7 @@ const PaymentScreen = ({navigation}) => {
   const {previous, next} = movements;
   const nextLogo = next ? next.length > 0 && next[0].image : null;
 
-  const checkPreviousMovement = () => {
+  const showsPreviousMovement = () => {
     if (!previous) return null;
 
     if (previous.length === 0) {
@@ -47,7 +47,7 @@ const PaymentScreen = ({navigation}) => {
     }
   };
 
-  const checkNextMovement = () => {
+  const showsNextMovement = () => {
     if (!next) return null;
 
     if (next.length === 0) {
@@ -111,10 +111,10 @@ const PaymentScreen = ({navigation}) => {
           icon="chevron-back-outline"
           text="Storico"
         />
-        {checkPreviousMovement()}
+        {showsPreviousMovement()}
         <View style={styles.nextMovContainer}>
           <HeaderTitle text="Prossimo movimento" />
-          {checkNextMovement()}
+          {showsNextMovement()}
         </View>
       </View>
     </Screen>
