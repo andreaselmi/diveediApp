@@ -21,19 +21,29 @@ const MainScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HeaderTitle style={{marginBottom: 10}} text="Novità" />
-          {news.map((item) => (
-            <Card
-              key={item.id}
-              title={_.get(item, 'title', 'Titolo non disponibile')}
-              subtitle={_.get(item, 'date', 'Data non disponibile')}
-              imgUri={item.image || require('../assets/news/placeholder.png')}
-            />
-          ))}
+          {news
+            ? news.map((item) => (
+                <Card
+                  key={item.id}
+                  title={_.get(item, 'title', 'Titolo non disponibile')}
+                  subtitle={_.get(item, 'date', 'Data non disponibile')}
+                  imgUri={
+                    item.image || require('../assets/news/placeholder.png')
+                  }
+                />
+              ))
+            : null}
         </View>
         <View>
-          {sections.map((section) => (
-            <Section key={section.id} title="Ultime uscite" item={section} />
-          ))}
+          {sections
+            ? sections.map((section) => (
+                <Section
+                  key={section.id}
+                  title="Ultime uscite"
+                  item={section}
+                />
+              ))
+            : null}
         </View>
       </ScrollView>
     </Screen>
