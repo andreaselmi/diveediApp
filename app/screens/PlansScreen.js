@@ -1,9 +1,8 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 
 //components
 import Screen from '../components/Screen';
-import Text from '../components/Text';
 import HeaderTitle from '../components/HeaderTitle';
 import DisplayTotal from '../components/plans/DisplayTotal';
 
