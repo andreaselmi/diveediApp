@@ -49,7 +49,7 @@ const WelcomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   authContainer: {
-    marginTop: 80,
+    marginTop: 'auto',
   },
   bgImg: {
     alignSelf: 'flex-end',
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   },
   screenContainer: {
     padding: 20,
+    flex: 1,
   },
 });
 
