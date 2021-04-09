@@ -59,14 +59,3 @@ const AppNavigator = () => {
 };
 
 export default AppNavigator;
-
-// tabBarOptions={{
-//     activeTintColor: colors.activeIconColor,
-//     inactiveTintColor: colors.inactiveIconColor,
-//     activeBackgroundColor: colors.backgroundCardColor,
-//     inactiveBackgroundColor: colors.backgroundCardColor,
-//     style: {
-//       backgroundColor: colors.backgroundCardColor,
-//       borderTopWidth: 0,
-//     },
-//   }}
